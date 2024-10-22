@@ -10,7 +10,7 @@ The project begins by loading the LFW dataset, which consists of images of faces
 - The filtered data is organized and stored in a **Pandas DataFrame** for further analysis.
 
 ### 2. Principal Component Analysis (PCA)
-PCA is employed to reduce the dimensionality of the data while retaining the most important variance. 
+Principal Component Analysis (PCA) is a statistical technique used for dimensionality reduction while preserving as much information as possible in the dataset. PCA is a powerful tool for simplifying datasets, making them easier to visualize and analyze while retaining the most critical information.
 - The `pc` function is utilized, where an argument `a` specifies the number of components to retain.
 - This function outputs a new DataFrame containing the transformed data post-PCA.
 
