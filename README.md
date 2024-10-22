@@ -45,10 +45,9 @@ The confusion matrix shows the number of true positives, true negatives, false p
 ## Part Tow: Clustering Analysis with K-Means, Fuzzy C-Means, and DBSCAN
 This project explores clustering analysis using different techniques such as K-Means, Fuzzy C-Means, and DBSCAN on three distinct datasets. The goal is to discover meaningful patterns and groupings within the data. The project utilizes Python libraries like pandas, matplotlib, scikit-learn, numpy, and the fcmeans package.
 The project begins by loading three different datasets:
-
-"first_clustering_dataset.csv"
-"second_clustering_dataset.csv"
-"third_clustering_dataset.csv"
+- "first_clustering_dataset.csv"
+- "second_clustering_dataset.csv"
+- "third_clustering_dataset.csv"
 Each dataset contains two-dimensional data points.
 
 ### K-Means Clustering
