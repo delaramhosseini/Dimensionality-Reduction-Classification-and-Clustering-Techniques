@@ -1,116 +1,97 @@
 # Dimensionality Reduction Classification and Clustering Techniques
-Applying PCA for facial recognition and clustering analysis using K-Means, Fuzzy C-Means, and DBSCAN on different datasets.
+This project applies Principal Component Analysis (PCA) for facial recognition and utilizes various clustering algorithms—K-Means, Fuzzy C-Means, and DBSCAN—to analyze different datasets.
 
 ## Part One: Facial Recognition with PCA and MLP Classifier
-This project demonstrates facial recognition using Principal Component Analysis (PCA) and a Multi-Layer Perceptron (MLP) Classifier. The goal is to find the optimal number of PCA components that result in the highest accuracy for classifying faces in the LFW dataset. The project uses scikit-learn for data manipulation, dimensionality reduction, and machine learning tasks.
+This section demonstrates facial recognition through the use of **Principal Component Analysis (PCA)** and a **Multi-Layer Perceptron (MLP) Classifier**. The primary objective is to determine the optimal number of PCA components that yield the highest classification accuracy for faces in the **LFW (Labeled Faces in the Wild)** dataset. The project leverages the **scikit-learn** library for data manipulation, dimensionality reduction, and machine learning tasks.
 
-1. Load Data:
+### 1. Load Data
+The project begins by loading the LFW dataset, which consists of images of faces. The following steps are performed:
+- Filters are applied based on the minimum number of faces per person and image resizing options to enhance data quality.
+- The filtered data is organized and stored in a **Pandas DataFrame** for further analysis.
 
-The project begins by loading the LFW (Labeled Faces in the Wild) dataset, which contains facial images.
-Minimum faces per person and image resizing options are applied to filter the dataset.
-The data is then stored in a Pandas DataFrame for further processing.
+### 2. Principal Component Analysis (PCA)
+PCA is employed to reduce the dimensionality of the data while retaining the most important variance. 
+- The `pc` function is utilized, where an argument `a` specifies the number of components to retain.
+- This function outputs a new DataFrame containing the transformed data post-PCA.
 
-2. Principal Component Analysis (PCA):
+### 3. Splitting Data
+The dataset is divided into training and testing sets to evaluate model performance. 
+- A random sample of 25% of the data is designated for testing, while the remaining 75% is used for training the model.
 
-Principal Component Analysis is applied to reduce the dimensionality of the data.
-The pc function takes an argument a for the number of components to retain.
-The function returns a DataFrame containing the data after PCA transformation.
+### 4. Model Training and Evaluation
+The **MLPClassifier**, a type of neural network, is employed for face recognition. The project iterates through various PCA component counts (from 10 to 79) to identify the configuration that produces the best accuracy. For each count of components:
+- Data is transformed using PCA.
+- The transformed data is split into training and testing sets.
+- The MLP Classifier is trained on the training dataset.
+- Predictions are made on the testing dataset.
+- Model accuracy is calculated and displayed. 
+- The highest accuracy and its corresponding configuration are recorded for later analysis.
 
-3. Splitting Data:
+### 5. Best Component Selection
+After evaluating multiple PCA configurations, the project identifies the optimal number of components that yields the highest classification accuracy.
 
-The dataset is split into training and testing sets.
-A random sample of 25% of the data is selected for testing, and the rest is used for training.
+### 6. Confusion Matrix
+A confusion matrix is generated to visualize the model's performance. This matrix displays the number of:
+- True Positives (correctly predicted positive cases)
+- True Negatives (correctly predicted negative cases)
+- False Positives (incorrectly predicted as positive)
+- False Negatives (incorrectly predicted as negative)
 
-4. Model Training and Evaluation:
+## Part Two: Clustering Analysis with K-Means, Fuzzy C-Means, and DBSCAN
+This section investigates clustering techniques using K-Means, Fuzzy C-Means, and **DBSCAN (Density-Based Spatial Clustering of Applications with Noise)** on three distinct datasets. The goal is to identify meaningful patterns and groupings within the data. The project utilizes libraries such as **pandas**, **matplotlib**, **scikit-learn**, **numpy**, and the **fcmeans** package for fuzzy clustering.
 
-The MLPClassifier (Multi-Layer Perceptron) is used for face recognition.
-The project iterates through different numbers of PCA components (from 10 to 79) to find the best accuracy.
-For each number of components:
-Data is transformed using PCA.
-The transformed data is split into training and testing sets.
-An MLP Classifier is trained on the training data.
-Predictions are made on the testing data.
-The accuracy of the model is calculated and printed.
-The best accuracy and corresponding predictions are stored.
-
-5. Best Component Selection:
-
-After running the model for various numbers of PCA components, the project identifies the best count of components with the highest accuracy.
-
-6. Confusion Matrix:
-
-Finally, a confusion matrix is generated to evaluate the model's performance.
-The confusion matrix shows the number of true positives, true negatives, false positives, and false negatives.
-
-## Part Tow: Clustering Analysis with K-Means, Fuzzy C-Means, and DBSCAN
-This project explores clustering analysis using different techniques such as K-Means, Fuzzy C-Means, and DBSCAN on three distinct datasets. The goal is to discover meaningful patterns and groupings within the data. The project utilizes Python libraries like pandas, matplotlib, scikit-learn, numpy, and the fcmeans package.
-The project begins by loading three different datasets:
-- "first_clustering_dataset.csv"
-- "second_clustering_dataset.csv"
-- "third_clustering_dataset.csv"
-Each dataset contains two-dimensional data points.
+The datasets analyzed include:
+- **first_clustering_dataset.csv**
+- **second_clustering_dataset.csv**
+- **third_clustering_dataset.csv**
+Each dataset comprises two-dimensional data points.
 
 ### K-Means Clustering
+K-Means clustering is utilized to partition data points into distinct clusters. The `KMEANS` function is defined with the following steps:
+- Initialize a K-Means model with a specified number of clusters and random initialization repetitions.
+- Fit the model to the data.
+- Visualize the clustered data points alongside cluster centroids.
+- Compute the **Sum of Squared Errors (SSE)** and **silhouette score** to evaluate clustering quality.
 
-The project utilizes K-Means clustering to group data points into clusters. The KMEANS function is defined to perform K-Means clustering with the following steps:
-
-Initialize a K-Means model with a specified number of clusters (number_of_clusters) and random initialization repetitions (random_c).
-Fit the model to the data.
-Visualize the clustered data points along with centroids.
-Calculate the Sum of Squared Errors (SSE) and silhouette score for evaluating clustering quality.
-The KMEANS function is applied to each dataset with different cluster counts:
-
-For "first_clustering_dataset" (K=2):
-
-SSE: 146.90
-Silhouette Score: 0.536
-For "second_clustering_dataset" (K=3):
-
-SSE: 6481.46
-Silhouette Score: 0.723
-For "third_clustering_dataset" (K=5):
-
-SSE: 222.20
-Silhouette Score: 0.560
+The `KMEANS` function is applied to each dataset with varying cluster counts:
+- For **first_clustering_dataset** (K=2): 
+  - SSE: 146.90
+  - Silhouette Score: 0.536
+- For **second_clustering_dataset** (K=3):
+  - SSE: 6481.46
+  - Silhouette Score: 0.723
+- For **third_clustering_dataset** (K=5):
+  - SSE: 222.20
+  - Silhouette Score: 0.560
 
 ### Fuzzy C-Means Clustering
+**Fuzzy C-Means (FCM)** clustering is employed to allow data points to belong to multiple clusters with varying membership degrees. The `fcm_func` function is defined with the following steps:
+- Initialize an FCM model with a specified number of clusters.
+- Fit the model to the data.
+- Visualize the clustered data points along with the cluster centers.
+- Calculate SSE and silhouette scores for evaluating clustering quality.
 
-Fuzzy C-Means (FCM) clustering is applied to the datasets to allow data points to belong to multiple clusters with varying degrees of membership. The fcm_func function is defined to perform FCM clustering with the following steps:
-
-Initialize an FCM model with a specified number of clusters (number_of_cluster).
-Fit the model to the data.
-Visualize the clustered data points along with cluster centers.
-Calculate the SSE and silhouette score for evaluating clustering quality.
-The fcm_func function is applied to each dataset with different cluster counts:
-
-For "first_clustering_dataset" (K=2):
-
-SSE: 146.97
-Silhouette Score: 0.536
-For "second_clustering_dataset" (K=3):
-
-SSE: 6483.79
-Silhouette Score: 0.723
-For "third_clustering_dataset" (K=5):
-
-SSE: 222.70
-Silhouette Score: 0.560
+The `fcm_func` function is applied to each dataset:
+- For **first_clustering_dataset** (K=2):
+  - SSE: 146.97
+  - Silhouette Score: 0.536
+- For **second_clustering_dataset** (K=3):
+  - SSE: 6483.79
+  - Silhouette Score: 0.723
+- For **third_clustering_dataset** (K=5):
+  - SSE: 222.70
+  - Silhouette Score: 0.560
 
 ### DBSCAN Clustering
+DBSCAN clustering is applied to the datasets, which does not require pre-specifying the number of clusters; instead, it identifies clusters based on data density. The `dbscan_func` function is defined with these steps:
+- Initialize a DBSCAN model with specified parameters (`eps` for neighborhood radius and `min_samples` for minimum data points in a neighborhood).
+- Fit the model to the data.
+- Visualize the clustered data points.
 
-DBSCAN (Density-Based Spatial Clustering of Applications with Noise) clustering is applied to the datasets. DBSCAN does not require specifying the number of clusters in advance but identifies clusters based on data density. The dbscan_func function is defined to perform DBSCAN clustering with the following steps:
-
-Initialize a DBSCAN model with specified parameters (v_eps for epsilon and v_min_samples for minimum samples).
-Fit the model to the data.
-Visualize the clustered data points.
-The dbscan_func function is applied to each dataset with different parameters:
-
-For "first_clustering_dataset" (eps=0.25, min_samples=10):
-
-Silhouette Score: 0.521
-For "second_clustering_dataset" (eps=6, min_samples=2):
-
-Silhouette Score: 0.723
-For "third_clustering_dataset" (eps=0.39, min_samples=10):
-
-Silhouette Score: 0.510
+The `dbscan_func` is applied to each dataset with varying parameters:
+- For **first_clustering_dataset** (eps=0.25, min_samples=10):
+  - Silhouette Score: 0.521
+- For **second_clustering_dataset** (eps=6, min_samples=2):
+  - Silhouette Score: 0.723
+- For **third_clustering_dataset** (eps=0.39, min_samples=10):
+  - Silhouette Score: 0.510
