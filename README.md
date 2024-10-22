@@ -47,6 +47,7 @@ The datasets analyzed include:
 Each dataset comprises two-dimensional data points.
 
 ### K-Means Clustering
+---
 K-Means clustering is utilized to partition data points into distinct clusters. The `KMEANS` function is defined with the following steps:
 - Initialize a K-Means model with a specified number of clusters and random initialization repetitions.
 - Fit the model to the data.
@@ -65,6 +66,7 @@ The `KMEANS` function is applied to each dataset with varying cluster counts:
   - Silhouette Score: 0.560
 
 ### Fuzzy C-Means Clustering
+---
 **Fuzzy C-Means (FCM)** clustering is employed to allow data points to belong to multiple clusters with varying membership degrees. The `fcm_func` function is defined with the following steps:
 - Initialize an FCM model with a specified number of clusters.
 - Fit the model to the data.
@@ -83,6 +85,7 @@ The `fcm_func` function is applied to each dataset:
   - Silhouette Score: 0.560
 
 ### DBSCAN Clustering
+---
 DBSCAN clustering is applied to the datasets, which does not require pre-specifying the number of clusters; instead, it identifies clusters based on data density. The `dbscan_func` function is defined with these steps:
 - Initialize a DBSCAN model with specified parameters (`eps` for neighborhood radius and `min_samples` for minimum data points in a neighborhood).
 - Fit the model to the data.
