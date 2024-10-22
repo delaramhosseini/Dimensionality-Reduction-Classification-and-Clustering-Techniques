@@ -19,7 +19,7 @@ The dataset is divided into training and testing sets to evaluate model performa
 - A random sample of 25% of the data is designated for testing, while the remaining 75% is used for training the model.
 
 ### 4. Model Training and Evaluation
-The **MLPClassifier**, a type of neural network, is employed for face recognition. The project iterates through various PCA component counts (from 10 to 79) to identify the configuration that produces the best accuracy. For each count of components:
+The **MLP Classifier**, a type of neural network, is employed for face recognition. The project iterates through various PCA component counts (from 10 to 79) to identify the configuration that produces the best accuracy. For each count of components:
 - Data is transformed using PCA.
 - The transformed data is split into training and testing sets.
 - The MLP Classifier is trained on the training dataset.
